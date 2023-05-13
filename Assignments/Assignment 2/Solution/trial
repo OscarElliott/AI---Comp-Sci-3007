@@ -1,0 +1,45 @@
+def search_kdtree(node, query_point, min_dimension, best_node=None, best_distance=float('inf')):
+    if node is None:
+        return best_node
+
+    # Step 1: drop query point down the tree until a leaf node is reached
+    if node.left is None and node.right is None:
+        # Step 2: record the leaf node as the current best node
+        distance = euclidean_distance(query_point, node.point[:11,])
+        if distance < best_distance:
+            best_node = node
+            best_distance = distance
+
+    else:
+        axis = node.d
+        if query_point[axis] <= node.val:
+            near_node = node.left
+            far_node = node.right
+        else:
+            near_node = node.right
+            far_node = node.left
+
+        # Step 3: unwind the recursion of the tree, calculating at each node
+        # the lower bound of the distance to query point of the other branch
+        lower_bound = distance_lb(query_point, far_node)
+        best_node = search_kdtree(near_node, query_point, min_dimension, best_node, best_distance)
+
+        # Step 4: if the lower bound is larger than the current best distance, continue ascending the tree
+        if lower_bound > best_distance:
+            return best_node
+
+        # Step 5: if the lower bound is not larger than the current best distance, descend the other branch
+        # until a leaf node is reached, then update the best node if needed
+        distance = euclidean_distance(query_point, far_node.point[:11,])
+        if distance < best_distance:
+            best_node = far_node
+            best_distance = distance
+
+            if distance <= min_dimension:
+                return best_node
+
+        best_node = search_kdtree(near_node, query_point, min_dimension, best_node, best_distance)
+
+    # Step 6: once the root node is reached, terminate the search and return the point in the best node
+    # as the nearest neighbour of the query point
+    return best_node.point
