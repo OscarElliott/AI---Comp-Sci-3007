@@ -6,4 +6,4 @@ This repository includes my assignments from my 3rd year course COMP SCI 3007 - 
 
 [Assignment - 2](https://github.com/OscarElliott/AI---Comp-Sci-3007/tree/main/Assignments/Assignment%202/Task) and [Solution - 2](https://github.com/OscarElliott/AI---Comp-Sci-3007/tree/main/Assignments/Assignment%202/Solution)
 
-[Assignment - 3](https://github.com/OscarElliott/AI---Comp-Sci-3007/tree/main/Assignments/Assignment%203/Task) and [Solution - 3](https://github.com/OscarElliott/AI---Comp-Sci-3007/tree/main/Assignments/Assignment%203/Solution)
+[Assignment - 3](https://github.com/OscarElliott/AI---Comp-Sci-3007/tree/main/Assignments/Assignment%203/Problem) and [Solution - 3](https://github.com/OscarElliott/AI---Comp-Sci-3007/tree/main/Assignments/Assignment%203/Solution)
